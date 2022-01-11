@@ -1,0 +1,100 @@
+<div class="registration__wrapper">
+  <div class="registration__header">
+    <h3>Register Here</h3>
+  </div>
+  <div class="registraion__body">
+    <div
+      class="alert alert-danger alert-dismissible"
+      data-auto-dismiss
+      role="alert"
+      *ngIf="errorRes"
+    >
+      {{ errorRes }}
+    </div>
+
+    <div class="alert alert-success" role="alert" *ngIf="successRes">
+      {{ successRes }}
+    </div>
+
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="email">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          aria-describedby="firstName"
+          placeholder="Enter First Name"
+          ngModel
+          name="firstName"
+          required
+          #firstName="ngModel"
+        />
+        <span class="help__box" *ngIf="!firstName.valid && firstName.touched">
+          First name is mandetory</span
+        >
+      </div>
+      <div class="form-group">
+        <label for="email">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          aria-describedby="lastName"
+          placeholder="Enter Last Name"
+          ngModel
+          name="lastName"
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+          ngModel
+          name="email"
+          required
+          email
+          #email="ngModel"
+        />
+        <span class="help__box" *ngIf="!email.valid && email.touched">
+          Please enter a valid email</span
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+          ngModel
+          name="password"
+          required
+          #passowrd="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Confirm Password</label>
+        <input
+          type="text"
+          class="form-control"
+          id="confPassword"
+          aria-describedby="confPassword"
+          placeholder="Confirm Password"
+          ngModel
+          name="confPassword"
+        />
+      </div>
+      <div class="registration__button">
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
